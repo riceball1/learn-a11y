@@ -234,21 +234,21 @@ export default function DigitalAccessibility() {
             )}
             
             {/* Question for non-knowledge steps */}
-            {currentStepData.type !== "knowledge" && currentStepData.type !== "completion" && (
+            {currentStepData?.type !== "knowledge" && currentStepData?.type !== "completion" && (
               <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
                 <h3 className="text-lg font-semibold text-blue-300 mb-2">💡 Question</h3>
                 <p className="text-blue-100 font-medium">
-                  {currentStepData.question}
+                  {currentStepData?.question}
                 </p>
               </div>
             )}
           </div>
 
           {/* Image Quiz */}
-          {currentStepData.type === "image-quiz" && (
+          {currentStepData?.type === "image-quiz" && (
             <div className="space-y-4 mb-8">
               <div className="grid md:grid-cols-2 gap-6">
-                {currentStepData.images.map((image, index) => (
+                {currentStepData.images?.map((image, index) => (
                   <div 
                     key={index}
                     className={`cursor-pointer rounded-lg border-2 transition-all duration-200 ${
@@ -277,7 +277,7 @@ export default function DigitalAccessibility() {
           {/* Multiple Choice Options */}
           {currentStepData.type === "multiple-choice" && (
             <div className="space-y-3 mb-8">
-              {currentStepData.options.map((option, index) => (
+              {currentStepData.options?.map((option, index) => (
                 <label 
                   key={index}
                   className={`flex items-center space-x-3 cursor-pointer rounded-lg p-4 transition-all duration-200 ${
@@ -318,7 +318,7 @@ export default function DigitalAccessibility() {
               <p className={`${
                 isCorrect ? 'text-green-100' : 'text-red-100'
               }`}>
-                {currentStepData.explanation}
+                {currentStepData?.explanation}
               </p>
             </div>
           )}
@@ -339,7 +339,7 @@ export default function DigitalAccessibility() {
             </button>
 
             <div className="flex items-center space-x-4">
-              {currentStepData.type === "completion" && (
+              {currentStepData?.type === "completion" && (
                 <Link 
                   href="/"
                   className="text-gray-400 hover:text-white transition-colors"
@@ -349,7 +349,7 @@ export default function DigitalAccessibility() {
               )}
               
               {/* Show Continue for knowledge sections */}
-              {currentStepData.type === "knowledge" ? (
+              {currentStepData?.type === "knowledge" ? (
                 <button
                   onClick={handleNext}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
